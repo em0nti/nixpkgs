@@ -10,11 +10,13 @@
   # Nix configuration
   # The Determinate Systems installer likely already set these up,
   # but it's good to make them explicit in your configuration
+  # Enable Nix
+  nix.enable = true;
+  # Use the new optimise option
+  nix.optimise.automatic = true;
   nix.settings = {
-    auto-optimise-store = true;
     experimental-features = [ "nix-command" "flakes" ];
   };
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -32,19 +34,13 @@
     tree
   ];
 
-  # Enable nix-darwin's services
-  services.nix-daemon.enable = true;
-
-  # Optional but useful - allows Touch ID for sudo
-  security.pam.enableSudoTouchIdAuth = true;
-
   # Homebrew integration - this allows nix-darwin to be aware of Homebrew
   # but doesn't necessarily manage it fully yet
   homebrew = {
     enable = true;
     onActivation.autoUpdate = true;
     # Start with 'uncleanable' which doesn't remove any existing Homebrew packages
-    onActivation.cleanup = "uncleanable";
+    onActivation.cleanup = "none";
 
     # You can optionally start listing some Homebrew packages you want to ensure are installed
     # but this is not required for initial setup
@@ -53,9 +49,9 @@
       "fish"
     ];
     casks = [
-      "marta",
-      "raycast",
-      "ukrainian-typographic-keyboard",
+      "marta"
+      "raycast"
+      "ukrainian-typographic-keyboard"
       "font-hack-nerd-font"
     ];
   };
