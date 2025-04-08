@@ -11,12 +11,10 @@
   # The Determinate Systems installer likely already set these up,
   # but it's good to make them explicit in your configuration
   # Enable Nix
-  nix.enable = true;
+  nix.enable = false;
   # Use the new optimise option
-  nix.optimise.automatic = true;
-  nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
-  };
+  #nix.optimise.automatic = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
