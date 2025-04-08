@@ -20,7 +20,7 @@
     # Determine if you're on Apple Silicon or Intel
     system = "aarch64-darwin"; # Use x86_64-darwin for Intel Macs
     username = "emonti";
-    hostname = "emonti-Air.local";
+    hostname = "emonti-air";
   in {
     darwinConfigurations.${hostname} = darwin.lib.darwinSystem {
       inherit system;
