@@ -8,6 +8,7 @@
     # Add a few user-level packages as a test
     bat
     eza
+    fabric-ai
   ];
 
   # Careful with environment variables - start with a minimal set
