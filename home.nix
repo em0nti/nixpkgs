@@ -29,6 +29,21 @@
     };
     fish = {
       enable = true;
+      interactiveShellInit = ''
+    # Add Homebrew to PATH
+    if test -d /opt/homebrew/bin
+      fish_add_path /opt/homebrew/bin
+      fish_add_path /opt/homebrew/sbin
+    else if test -d /usr/local/bin
+      fish_add_path /usr/local/bin
+      fish_add_path /usr/local/sbin
+    end
+
+    # Set Homebrew environment variables
+    set -gx HOMEBREW_PREFIX "/opt/homebrew"
+    set -gx HOMEBREW_CELLAR "/opt/homebrew/Cellar"
+    set -gx HOMEBREW_REPOSITORY "/opt/homebrew"
+  '';
     };  
 
   };
