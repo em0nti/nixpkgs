@@ -16,9 +16,9 @@
 
   # Configure Ghostty to use Fish as the default shell
   xdg.configFile."ghostty/config".text = ''
-    shell = ${pkgs.fish}/bin/fish
-    font-family = "Hack Nerd Font"
-    font-size = 14
+    command = ${pkgs.fish}/bin/fish --login --interactive
+    shell-integration = fish
+    font-size = 16
 '';
 
   programs = {
