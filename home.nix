@@ -1,9 +1,6 @@
 { pkgs, ... }: {
-  # Home Manager needs a bit of information about you and the paths it should manage
   home.username = "emonti";
   home.homeDirectory = "/Users/emonti";
-
-  # Start with a minimal set of packages
   home.packages = with pkgs; [
     # Add a few user-level packages as a test
     bat
@@ -17,18 +14,23 @@
     # NIX_PATH = "$HOME/.nix-defexpr/channels:$NIX_PATH";
   };
 
-  # Begin with minimal program configurations
-  programs = {
-    # Enable Home Manager itself
-    home-manager.enable = true;
+  # Configure Ghostty to use Fish as the default shell
+  xdg.configFile."ghostty/config".text = ''
+    shell = ${pkgs.fish}/bin/fish
+    font-family = "Hack Nerd Font"
+    font-size = 14
+'';
 
-    # Start with a simple program configuration, like direnv
+  programs = {
+    home-manager.enable = true;
     direnv = {
       enable = true;
       nix-direnv.enable = true;
     };
+    fish = {
+      enable = true;
+    };  
 
-    # You can gradually add more program configurations later
   };
 
   # State version - don't change this
