@@ -1,10 +1,25 @@
 { pkgs, ... }: {
-  # Minimal system defaults - add only what you want to manage
-  system.defaults = {
-    dock = {
-      # Example: Only manage specific dock settings
-      autohide = true;
+  # System configuration
+  system = {
+    # System defaults
+    defaults = {
+      dock = {
+        autohide = true;
+        #show-recents = false;  # Hide recent applications
+        #mru-spaces = false;    # Don't automatically rearrange spaces
+        #orientation = "bottom";
+      };
     };
+
+    # Set default shell to Fish more safely using activation script
+    activationScripts.postActivation.text = ''
+      if [ "$SHELL" != "${pkgs.fish}/bin/fish" ]; then
+        sudo chsh -s ${pkgs.fish}/bin/fish emonti
+      fi
+    '';
+
+    # Used for backwards compatibility
+    stateVersion = 4;
   };
 
   # Nix configuration
@@ -58,6 +73,4 @@
   programs.fish = {
     enable = true;
   };
-  # Used for backwards compatibility
-  system.stateVersion = 4;
 }
