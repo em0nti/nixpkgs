@@ -22,16 +22,20 @@
   users.users.emonti = {
     name = "emonti";
     home = "/Users/emonti";
+    shell = pkgs.fish;
   };
 
-  # System packages - these are installed system-wide
-  # and are available to all users
-  environment.systemPackages = with pkgs; [
+  environment = {
+    systemPackages = with pkgs; [
     # Utilities
     htop
     tree
     fish
   ];
+
+  # Shell configuration
+  shells = [ pkgs.fish ];
+  };
 
   # Homebrew integration - this allows nix-darwin to be aware of Homebrew
   # but doesn't necessarily manage it fully yet
@@ -51,8 +55,9 @@
     ];
   };
 
-  programs.fish.enable = true;
-
+  programs.fish = {
+    enable = true;
+  };
   # Used for backwards compatibility
   system.stateVersion = 4;
 }
