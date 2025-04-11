@@ -48,6 +48,7 @@
     zed-editor = {
       enable = true;
       extensions = [
+        "tokyo-night"
         "nix"
         "html"
         "xml"
