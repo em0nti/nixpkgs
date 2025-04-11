@@ -43,9 +43,10 @@
   environment = {
     systemPackages = with pkgs; [
     # Utilities
+    git
+    fish
     htop
     tree
-    fish
   ];
 
   # Shell configuration
