@@ -48,3 +48,4 @@ out/
 # Nix specific
 result
 result-*
+.direnv
