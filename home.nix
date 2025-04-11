@@ -43,9 +43,36 @@
     set -gx HOMEBREW_PREFIX "/opt/homebrew"
     set -gx HOMEBREW_CELLAR "/opt/homebrew/Cellar"
     set -gx HOMEBREW_REPOSITORY "/opt/homebrew"
-  '';
+    '';
     };  
-
+zed-editor = {
+enable = true;
+extensions = [ "nix" "toml" "elixir" "make" ];
+userSettings = {
+features = {
+edit_prediction_provider = "copilot";
+    };
+    assistant = {
+      default_model = {
+        provider = "zed.dev";
+        model = "claude-3-7-sonnet-latest";
+      };
+      version = "2";
+    };
+    base_keymap = "VSCode";
+    ui_font_size = 16;
+    buffer_font_size = 16;
+    theme = {
+      mode = "system";
+      light = "Tokyo Night Light";
+      dark = "Tokyo Night";
+    };
+  };
+  userKeymaps = {
+    "ctrl-s" = "workspace::Save";
+  };
+  installRemoteServer = false;
+};
   };
 
   # State version - don't change this

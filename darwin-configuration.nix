@@ -67,6 +67,7 @@
       "ukrainian-typographic-keyboard"
       "font-hack-nerd-font"
       "ghostty"
+      "zed"
     ];
   };
 
