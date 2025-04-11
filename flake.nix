@@ -17,24 +17,31 @@
   };
 
   outputs = { self, nixpkgs, darwin, home-manager, ... }@inputs:
-  let
-    # Determine if you're on Apple Silicon or Intel
-    system = "aarch64-darwin"; # Use x86_64-darwin for Intel Macs
-    username = "emonti";
-    hostname = "emonti-air";
-  in {
-    darwinConfigurations.${hostname} = darwin.lib.darwinSystem {
-      inherit system;
-      modules = [
-        ./darwin-configuration.nix
+    let
+      # Determine if you're on Apple Silicon or Intel
+      system = "aarch64-darwin"; # Use x86_64-darwin for Intel Macs
+      username = "emonti";
+      hostname = "emonti-air";
+    in
+    {
+      darwinConfigurations.${hostname} = darwin.lib.darwinSystem {
+        inherit system;
+        modules = [
+          ./darwin-configuration.nix
 
-        home-manager.darwinModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.${username} = import ./home.nix;
-        }
-      ];
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.${username} = import ./home.nix;
+          }
+        ];
+      };
+      # Define a devShell for the development environment
+      devShell.${system} = inputs.nixpkgs.legacyPackages.${system}.mkShell {
+        buildInputs = [
+          inputs.nixpkgs.legacyPackages.${system}.nixpkgs-fmt
+        ];
+      };
     };
-  };
 }
