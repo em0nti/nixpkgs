@@ -54,6 +54,7 @@
         "xml"
         "mermaid"
         "workflow-description-language"
+        "markdown-oxide"
       ];
       userSettings = {
         features = {
@@ -71,7 +72,7 @@
         buffer_font_size = 16;
         theme = {
           mode = "system";
-          light = "Tokyo Night Light";
+          light = "Gruvbox Light Soft";
           dark = "Tokyo Night";
         };
       };
