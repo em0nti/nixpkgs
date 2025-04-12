@@ -58,7 +58,7 @@
   homebrew = {
     enable = true;
     onActivation.autoUpdate = true;
-    onActivation.cleanup = "none";
+    onActivation.cleanup = "uninstall";
     brews = [
       # Example: "wget"
     ];
