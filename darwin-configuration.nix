@@ -25,12 +25,8 @@
   # Nix configuration
   # The Determinate Systems installer likely already set these up,
   # but you can override them here if needed
-  # Enable Nix
   nix.enable = false;
-  # Use the new optimise option
   #nix.optimise.automatic = true;
-
-  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # User reference - not creating the user, just referencing the existing one

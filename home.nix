@@ -1,13 +1,15 @@
 { pkgs, ... }: {
   home.username = "emonti";
   home.homeDirectory = "/Users/emonti";
+  home.stateVersion = "24.11"; # Use appropriate version
   home.packages = with pkgs; [
-    # Add a few user-level packages as a test
+    # Nix Language Server
+    nixd
+    # Utilities
     bat
     eza
     fabric-ai
   ];
-
   # Careful with environment variables - start with a minimal set
   home.sessionVariables = {
     # Only add variables that won't conflict with existing ones
@@ -150,6 +152,4 @@
     };
   };
 
-  # State version - don't change this
-  home.stateVersion = "24.11"; # Use appropriate version
 }
