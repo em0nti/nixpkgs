@@ -37,11 +37,5 @@
           }
         ];
       };
-      # Define a devShell for the development environment
-      devShell.${system} = inputs.nixpkgs.legacyPackages.${system}.mkShell {
-        buildInputs = [
-          inputs.nixpkgs.legacyPackages.${system}.nixpkgs-fmt
-        ];
-      };
     };
 }

@@ -3,12 +3,14 @@
   home.homeDirectory = "/Users/emonti";
   home.stateVersion = "24.11"; # Use appropriate version
   home.packages = with pkgs; [
-    # Nix Language Server
-    nixd
     # Utilities
+    git
+    htop
+    tree
     bat
     eza
     fabric-ai
+    devenv # https://devenv.sh/
   ];
   # Careful with environment variables - start with a minimal set
   home.sessionVariables = {
@@ -51,7 +53,7 @@
       enable = true;
       # Configuration written to ~/.config/starship.toml
       settings = {
-        format = "$username $hostname $directory $git_branch $git_state $git_status $cmd_duration $line_break $python $golang $nodejs $nix_shell $direnv $container $character";
+        format = "$username $hostname $directory $git_branch $git_state $git_status $cmd_duration $line_break $python $golang $nodejs $nix_shell $character";
 
         directory = {
           style = "blue";
@@ -132,7 +134,17 @@
           dark = "Tokyo Night";
         };
       };
-      userKeymaps = { };
+      userKeymaps = [
+        {
+          context = "Editor && mode == full";
+          bindings = {
+          alt-z = "editor::ToggleSoftWrap";
+          };
+        }
+        { context = "Editor && mode == full && edit_prediction";
+        bindings = {cmd-right = "editor::AcceptPartialEditPrediction";};
+        }
+      ];
       installRemoteServer = false;
     };
   };

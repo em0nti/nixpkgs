@@ -33,23 +33,11 @@
   users.users.emonti = {
     name = "emonti";
     home = "/Users/emonti";
-    shell = pkgs.fish;
   };
 
-  environment = {
-    systemPackages = with pkgs; [
-    # Utilities
-    git
-    fish
-    htop
-    tree
-    devenv # https://devenv.sh/
-  ];
-
-  # Shell configuration
-  shells = [ pkgs.fish ];
-  };
-
+  # environment = {
+  #   systemPackages = {};
+  # };
   # Homebrew integration - this allows nix-darwin to be aware of Homebrew
   # but doesn't necessarily manage it fully yet
   homebrew = {
@@ -69,7 +57,4 @@
     ];
   };
 
-  programs.fish = {
-    enable = true;
-  };
 }
