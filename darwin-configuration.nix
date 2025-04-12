@@ -47,6 +47,7 @@
     fish
     htop
     tree
+    devenv # https://devenv.sh/
   ];
 
   # Shell configuration
