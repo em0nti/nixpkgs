@@ -67,6 +67,11 @@
           };
           version = "2";
         };
+        languages = {
+          markdown = {
+            format_on_save: "on";
+          }
+        };
         base_keymap = "VSCode";
         ui_font_size = 16;
         buffer_font_size = 16;
