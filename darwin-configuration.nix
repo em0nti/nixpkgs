@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   # System configuration
   system = {
     # System defaults
@@ -35,9 +35,11 @@
     home = "/Users/emonti";
   };
 
-  # environment = {
-  #   systemPackages = {};
-  # };
+  environment.systemPackages = with pkgs; [
+    fish
+  ];
+  programs.fish.enable = true;
+
   # Homebrew integration - this allows nix-darwin to be aware of Homebrew
   # but doesn't necessarily manage it fully yet
   homebrew = {
@@ -56,5 +58,4 @@
       "zed"
     ];
   };
-
 }

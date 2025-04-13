@@ -1,10 +1,9 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   home.username = "emonti";
   home.homeDirectory = "/Users/emonti";
   home.stateVersion = "24.11"; # Use appropriate version
   home.packages = with pkgs; [
     # Utilities
-    git
     htop
     tree
     bat
@@ -15,7 +14,8 @@
   # Careful with environment variables - start with a minimal set
   home.sessionVariables = {
     # Only add variables that won't conflict with existing ones
-    # NIX_PATH = "$HOME/.nix-defexpr/channels:$NIX_PATH";
+    NIX_PATH = "$HOME/.nix-defexpr/channels:$NIX_PATH";
+    PATH = "$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$PATH";
   };
 
   # Configure Ghostty to use Fish as the default shell
@@ -53,7 +53,7 @@
       enable = true;
       # Configuration written to ~/.config/starship.toml
       settings = {
-        format = "$username $hostname $directory $git_branch $git_state $git_status $cmd_duration $line_break $python $golang $nodejs $nix_shell $character";
+        format = "$username $hostname $directory $git_branch $git_state $git_status $python $nix_shell$nodejs$golang$character";
 
         directory = {
           style = "blue";
@@ -87,13 +87,8 @@
           style = "bright-black";
         };
 
-        cmd_duration = {
-          format = "[$duration]($style) ";
-          style = "yellow";
-        };
-
         python = {
-          format = "[$virtualenv]($style) ";
+          format = "[$virtualenv]($style)";
           style = "bright-black";
         };
       };
@@ -138,15 +133,15 @@
         {
           context = "Editor && mode == full";
           bindings = {
-          alt-z = "editor::ToggleSoftWrap";
+            alt-z = "editor::ToggleSoftWrap";
           };
         }
-        { context = "Editor && mode == full && edit_prediction";
-        bindings = {cmd-right = "editor::AcceptPartialEditPrediction";};
+        {
+          context = "Editor && mode == full && edit_prediction";
+          bindings = {cmd-right = "editor::AcceptPartialEditPrediction";};
         }
       ];
       installRemoteServer = false;
     };
   };
-
 }
