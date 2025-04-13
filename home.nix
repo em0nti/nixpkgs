@@ -115,8 +115,27 @@
           };
           version = "2";
         };
+        lsp = {
+          nil = {
+            initialization_options = {
+              formatting = {
+                command = ["alejandra" "--quiet" "--"];
+              };
+            };
+            settings = {
+              diagnostics = {
+                ignored = ["unused_binding"];
+              };
+            };
+
+          };
+        };
         languages = {
           markdown = {
+            format_on_save = "on";
+          };
+          nix = {
+            language_servers = ["nil" "!nixd"];
             format_on_save = "on";
           };
         };
