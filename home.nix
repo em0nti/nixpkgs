@@ -10,6 +10,7 @@
     eza
     fabric-ai
     devenv # https://devenv.sh/
+    markdown-oxide
   ];
   # Careful with environment variables - start with a minimal set
   home.sessionVariables = {
@@ -127,7 +128,6 @@
                 ignored = ["unused_binding"];
               };
             };
-
           };
         };
         languages = {
