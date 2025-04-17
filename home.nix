@@ -54,14 +54,15 @@
       enable = true;
       # Configuration written to ~/.config/starship.toml
       settings = {
-        format = "$username $hostname $directory $git_branch $git_state $git_status $python $nix_shell$nodejs$golang$character";
+        format = ''
+          $username$hostname$directory$git_branch$git_state$git_status$line_break $python$nix_shell$nodejs$golang$character'';
 
         directory = {
           style = "blue";
         };
 
         character = {
-          success_symbol = "[❯](purple)";
+          success_symbol = "[❯](blue)";
           error_symbol = "[❯](red)";
           vimcmd_symbol = "[❮](green)";
         };
