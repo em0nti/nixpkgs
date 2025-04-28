@@ -56,6 +56,7 @@
       "font-hack-nerd-font"
       "ghostty"
       "zed"
+      "claude"
     ];
   };
 }
