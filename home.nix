@@ -16,7 +16,7 @@
   home.sessionVariables = {
     # Only add variables that won't conflict with existing ones
     NIX_PATH = "$HOME/.nix-defexpr/channels:$NIX_PATH";
-    PATH = "$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$PATH";
+    #PATH = "$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$PATH";
   };
 
   # Configure Ghostty to use Fish as the default shell
