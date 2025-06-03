@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   home.username = "emonti";
   home.homeDirectory = "/Users/emonti";
-  home.stateVersion = "24.11"; # Use appropriate version
+  home.stateVersion = "25.05"; # Use appropriate version
   home.packages = with pkgs; [
     # Utilities
     htop
@@ -110,13 +110,13 @@
         features = {
           edit_prediction_provider = "copilot";
         };
-        assistant = {
+/*         assistant = {
           default_model = {
             provider = "zed.dev";
             model = "claude-3-7-sonnet-latest";
           };
           version = "2";
-        };
+        }; */
         lsp = {
           nil = {
             initialization_options = {
