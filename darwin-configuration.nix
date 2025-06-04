@@ -1,6 +1,8 @@
 {pkgs, ...}: {
   # System configuration
   system = {
+    # Set primary user (required for homebrew and dock settings)
+    primaryUser = "emonti";
     # System defaults
     defaults = {
       dock = {
