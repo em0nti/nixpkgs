@@ -107,9 +107,9 @@
         "markdown-oxide"
       ];
       userSettings = {
-        features = {
+/*         features = {
           edit_prediction_provider = "copilot";
-        };
+        }; */
 /*         assistant = {
           default_model = {
             provider = "zed.dev";
