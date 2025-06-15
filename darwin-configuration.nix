@@ -59,6 +59,7 @@
       "ghostty"
       "zed"
       "claude"
+      "bruno"
     ];
   };
 }
